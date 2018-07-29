@@ -1,6 +1,7 @@
 package jp.ginyolith.kamen_rider_matome.ui.main
 
 import android.content.Context
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,10 +13,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import jp.ginyolith.kamen_rider_matome.R
+import jp.ginyolith.kamen_rider_matome.WebviewActivity
 import jp.ginyolith.kamen_rider_matome.data.Article
 import jp.ginyolith.kamen_rider_matome.data.HttpAccess
 import jp.ginyolith.kamen_rider_matome.databinding.MainFragmentBinding
 import jp.ginyolith.kamen_rider_matome.databinding.RowMatomeListBinding
+import jp.ginyolith.kamen_rider_matome.setBorder
 
 class MainFragment : Fragment() {
 
@@ -42,10 +45,7 @@ class MainFragment : Fragment() {
                 binding.matomeList.layoutManager = LinearLayoutManager(context)
 
                 // Listに区切り線を入れる
-                val dividerItemDecoration = DividerItemDecoration(
-                        context,
-                        LinearLayoutManager(context).orientation)
-                binding.matomeList.addItemDecoration(dividerItemDecoration)
+                binding.matomeList.setBorder(true)
             }
         }).start()
 
@@ -66,6 +66,13 @@ class MainFragment : Fragment() {
             dataList[position].run {
                 holder.binding.article = this
                 Glide.with(context).load(thumbnailUrl).into(holder.binding.imageRowMatome)
+                holder.binding.layoutRowMatome.setOnClickListener {
+                    Intent(context, WebviewActivity::class.java).let {
+                        it.putExtra("url", this.url)
+                        context?.startActivity(it)
+                    }
+
+                }
             }
         }
 
