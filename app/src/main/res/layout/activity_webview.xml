@@ -5,18 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".WebviewActivity">
 
-    <android.support.constraint.ConstraintLayout
-
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/BaseToolbar"
+            app:titleTextColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <WebView
+            android:layout_below="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/webview">
 
         </WebView>
 
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 </layout>

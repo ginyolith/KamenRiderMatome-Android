@@ -22,6 +22,8 @@ class WebviewActivity : AppCompatActivity() {
             setAppCacheEnabled(true)
         }
         binding.webview.loadUrl(intent.getStringExtra("url"))
+
+        setSupportActionBar(binding.toolbar)
     }
 
 
