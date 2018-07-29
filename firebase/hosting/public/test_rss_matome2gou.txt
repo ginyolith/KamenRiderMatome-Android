@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>仮面ライダーまとめ２号</title>
+	<atom:link href="http://kamenrider2.net/feed" rel="self" type="application/rss+xml" />
+	<link>http://kamenrider2.net</link>
+	<description>仮面ライダーシリーズのまとめサイトです。ネタバレ記事もあるのでお気をつけください。</description>
+	<lastBuildDate>Sun, 29 Jul 2018 13:18:40 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.7</generator>
+	<atom:link rel='hub' href='http://kamenrider2.net/?pushpress=hub'/>
+<site xmlns="com-wordpress:feed-additions:1">137013408</site>	<item>
+		<title>並行世界設定がクローズアップされはじめたけど【仮面ライダービルド 46話】</title>
+		<link>http://kamenrider2.net/archives/33190</link>
+		<comments>http://kamenrider2.net/archives/33190#respond</comments>
+		<pubDate>Sun, 29 Jul 2018 13:18:40 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダービルド]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33190</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/33190"><img title="DjOznw7V4AElhfo" src="http://kamenrider2.net/wp-content/uploads/DjOznw7V4AElhfo-300x169.jpg" alt="並行世界設定がクローズアップされはじめたけど【仮面ライダービルド 46話】" width="300" height="169" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33190/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33190</post-id>	</item>
+		<item>
+		<title>【動画】グリスブリザードへの変身シーンが熱すぎた…【ビルド 46話】</title>
+		<link>http://kamenrider2.net/archives/33200</link>
+		<comments>http://kamenrider2.net/archives/33200#comments</comments>
+		<pubDate>Sun, 29 Jul 2018 11:03:15 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダービルド]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33200</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/33200"><img title="DjPGQjhUcAAV5Yq" src="http://kamenrider2.net/wp-content/uploads/DjPGQjhUcAAV5Yq-300x169.jpg" alt="【動画】グリスブリザードへの変身シーンが熱すぎた…【ビルド 46話】" width="300" height="169" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33200/feed</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33200</post-id>	</item>
+		<item>
+		<title>仮面ライダー新作ゲーム「クライマックススクランブル ジオウ」Nintendo Switchで発売決定！</title>
+		<link>http://kamenrider2.net/archives/33182</link>
+		<comments>http://kamenrider2.net/archives/33182#comments</comments>
+		<pubDate>Sun, 29 Jul 2018 08:38:14 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダージオウ]]></category>
+		<category><![CDATA[家庭用ゲーム]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33182</guid>
+		<description><![CDATA[...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33182/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33182</post-id>	</item>
+		<item>
+		<title>【仮面ライダージオウ】メイン脚本家は下山健人氏なのでギャグ路線かな</title>
+		<link>http://kamenrider2.net/archives/33029</link>
+		<comments>http://kamenrider2.net/archives/33029#comments</comments>
+		<pubDate>Sun, 29 Jul 2018 06:10:56 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダージオウ]]></category>
+		<category><![CDATA[役者・スタッフ]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33029</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/33029"><img title="AOvzQE2" src="http://kamenrider2.net/wp-content/uploads/AOvzQE2-176x300.jpg" alt="【仮面ライダージオウ】メイン脚本家は下山健人氏なのでギャグ路線かな" width="176" height="300" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33029/feed</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33029</post-id>	</item>
+		<item>
+		<title>「DXグリスブリザードナックル」商品画像公開！プレバンで本日予約開始！</title>
+		<link>http://kamenrider2.net/archives/33165</link>
+		<comments>http://kamenrider2.net/archives/33165#comments</comments>
+		<pubDate>Sun, 29 Jul 2018 03:01:46 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダービルド]]></category>
+		<category><![CDATA[玩具]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33165</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/33165"><img title="20180729up_blizzardknuckle_01" src="http://kamenrider2.net/wp-content/uploads/20180729up_blizzardknuckle_01-300x300.jpg" alt="「DXグリスブリザードナックル」商品画像公開！プレバンで本日予約開始！" width="300" height="300" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33165/feed</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33165</post-id>	</item>
+		<item>
+		<title>仮面ライダービルド47話の次回予告動画とあらすじ公開！さよなら、仮面ライダーグリス</title>
+		<link>http://kamenrider2.net/archives/33006</link>
+		<comments>http://kamenrider2.net/archives/33006#comments</comments>
+		<pubDate>Sun, 29 Jul 2018 00:57:28 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダービルド]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33006</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/33006"><img title="1532824138293" src="http://kamenrider2.net/wp-content/uploads/1532824138293-300x169.jpg" alt="仮面ライダービルド47話の次回予告動画とあらすじ公開！さよなら仮面ライダーグリス" width="300" height="169" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33006/feed</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33006</post-id>	</item>
+		<item>
+		<title>仮面ライダービルド46話感想「誓いのビー・ザ・ワン」グリスブリザード登場！</title>
+		<link>http://kamenrider2.net/archives/33002</link>
+		<comments>http://kamenrider2.net/archives/33002#comments</comments>
+		<pubDate>Sun, 29 Jul 2018 00:44:06 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[ビルド感想]]></category>
+		<category><![CDATA[仮面ライダービルド]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33002</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/33002"><img title="2018-07-28_20_12_24" src="http://kamenrider2.net/wp-content/uploads/2018-07-28_20_12_24-300x176.jpg" alt="仮面ライダービルド46話感想「誓いのビー・ザ・ワン」グリスブリザード登場！" width="300" height="176" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33002/feed</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33002</post-id>	</item>
+		<item>
+		<title>菅田将暉さん「仮面ライダーは実在するので衣装とかありません」</title>
+		<link>http://kamenrider2.net/archives/33020</link>
+		<comments>http://kamenrider2.net/archives/33020#comments</comments>
+		<pubDate>Sat, 28 Jul 2018 14:25:14 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダーW]]></category>
+		<category><![CDATA[役者・スタッフ]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33020</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/33020"><img title="Di4M11oUUAEW2wk" src="http://kamenrider2.net/wp-content/uploads/Di4M11oUUAEW2wk-300x169.jpg" alt="菅田将暉さん「仮面ライダーは実在するので衣装とかありません」" width="300" height="169" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33020/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33020</post-id>	</item>
+		<item>
+		<title>マスター（石動惣一）の本来の人格はほとんど描写されないままだな【ビルド 45話】</title>
+		<link>http://kamenrider2.net/archives/32891</link>
+		<comments>http://kamenrider2.net/archives/32891#comments</comments>
+		<pubDate>Sat, 28 Jul 2018 12:34:28 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダービルド]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=32891</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/32891"><img title="2017-10-15_12_02_56" src="http://kamenrider2.net/wp-content/uploads/2017-10-15_12_02_56-1-300x167.jpg" alt="マスター（石動惣一）の本来の人格はほとんど描写されないままだな【ビルド 45話】" width="300" height="167" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/32891/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">32891</post-id>	</item>
+		<item>
+		<title>仮面ライダージオウのあらすじ読んだけど面白そう</title>
+		<link>http://kamenrider2.net/archives/32973</link>
+		<comments>http://kamenrider2.net/archives/32973#comments</comments>
+		<pubDate>Sat, 28 Jul 2018 10:24:36 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダージオウ]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=32973</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/32973"><img title="zio_201807_03_fixw_730_hq" src="http://kamenrider2.net/wp-content/uploads/zio_201807_03_fixw_730_hq-300x123.jpg" alt="仮面ライダージオウのあらすじ読んだけど面白そう" width="300" height="123" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/32973/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">32973</post-id>	</item>
+		<item>
+		<title>【ビルド夏映画 ネタバレ】エンディング後にゲムデウス、ハートなどがジオウの敵として登場？</title>
+		<link>http://kamenrider2.net/archives/33009</link>
+		<comments>http://kamenrider2.net/archives/33009#comments</comments>
+		<pubDate>Sat, 28 Jul 2018 09:53:00 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダービルド]]></category>
+		<category><![CDATA[仮面ライダージオウ]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=33009</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/33009"><img title="news_xlarge_kamenriderbuild_201707_04-1" src="http://kamenrider2.net/wp-content/uploads/news_xlarge_kamenriderbuild_201707_04-1-1-300x197.jpg" alt="【ビルド夏映画 ネタバレ】エンディング後にゲムデウス、ハートなどがジオウの敵として登場？" width="300" height="197" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/33009/feed</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">33009</post-id>	</item>
+		<item>
+		<title>【仮面ライダービルド】最終話ネタバレ雑談 : 戦兎、万丈、幻徳、カシラ、内海…みんなの運命はどうなる？</title>
+		<link>http://kamenrider2.net/archives/32653</link>
+		<comments>http://kamenrider2.net/archives/32653#comments</comments>
+		<pubDate>Sat, 28 Jul 2018 08:14:11 +0000</pubDate>
+		<dc:creator><![CDATA[まとめ２号管理人]]></dc:creator>
+				<category><![CDATA[仮面ライダービルド]]></category>
+
+		<guid isPermaLink="false">http://kamenrider2.net/?p=32653</guid>
+		<description><![CDATA[
+	<div>
+	<a href="http://kamenrider2.net/archives/32653"><img title="news_xlarge_kamenriderbuild_201707_04-1" src="http://kamenrider2.net/wp-content/uploads/news_xlarge_kamenriderbuild_201707_04-1-1-300x197.jpg" alt="【仮面ライダービルド】最終話ネタバレ雑談 : 戦兎、万丈、幻徳、カシラ、内海…みんなの運命はどうなる？" width="300" height="197" /></a>
+	</div>
+	...]]></description>
+		<wfw:commentRss>http://kamenrider2.net/archives/32653/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">32653</post-id>	</item>
+	</channel>
+</rss>
