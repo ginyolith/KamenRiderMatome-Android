@@ -10,13 +10,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:id="@+id/layout_row_matome"
+        android:layout_height="100dp">
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="5dp"
             android:id="@+id/image_row_matome"
             android:src="@mipmap/ic_launcher"/>
 
@@ -63,7 +64,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
-                tools:text="@{article.pubDate.toString()}"
+                tools:text="@{article.getFormattedPubDate()}"
                 android:text="2018/7/28 14:44"
             />
         </RelativeLayout>

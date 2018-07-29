@@ -1,6 +1,7 @@
 package jp.ginyolith.kamen_rider_matome.data
 
 import com.rometools.rome.feed.synd.SyndFeed
+import java.text.SimpleDateFormat
 import java.util.*
 
 data class Article(
@@ -9,7 +10,11 @@ data class Article(
         val title : String,
         val url : String,
         val thumbnailUrl : String?
-)
+) {
+    fun getFormattedPubDate() : String
+        = SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(pubDate)
+
+}
 
 data class Blog(
         val enum : Enum,
