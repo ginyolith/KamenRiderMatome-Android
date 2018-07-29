@@ -1,7 +1,7 @@
 package jp.ginyolith.kamen_rider_matome
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import jp.ginyolith.kamen_rider_matome.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
