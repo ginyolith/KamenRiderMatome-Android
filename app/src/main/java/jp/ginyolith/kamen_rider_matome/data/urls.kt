@@ -33,13 +33,22 @@ class HttpAccess {
         val feed = getFeed(url)
         val blog = Blog.fromFeed(feed)
 
-        fun getThumbnailUrl(entry: SyndEntry): String? {
-            val doc = Jsoup.parse(entry.contents[0].value)
-            return doc.getElementsByTag("img").firstOrNull()?.attr("src")
+        fun getThumbnailUrl(entry: SyndEntry, blog: Blog): String? {
+            val findFirstImgTagSrc = { html : String ->
+                Jsoup.parse(html).getElementsByTag("img").firstOrNull()?.attr("src")
+            }
+
+            return when(blog.enum) {
+                Blog.Enum.JIHOU,
+                Blog.Enum.TOKUSATSU_MATOME,
+                Blog.Enum.HENSHIN_SOKUHOU -> findFirstImgTagSrc(entry.contents[0].value)
+                Blog.Enum.MATOME_2GOU -> findFirstImgTagSrc(entry.description.value)
+            }
+
         }
 
         return feed.entries.map {
-            Article(blog, it.publishedDate, it.title, it.link, getThumbnailUrl(it))
+            Article(blog, it.publishedDate, it.title, it.link, getThumbnailUrl(it, blog))
         }.toList()
 
     }

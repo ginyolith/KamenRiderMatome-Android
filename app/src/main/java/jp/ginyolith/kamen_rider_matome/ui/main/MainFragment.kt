@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import jp.ginyolith.kamen_rider_matome.R
 import jp.ginyolith.kamen_rider_matome.WebviewActivity
 import jp.ginyolith.kamen_rider_matome.data.Article
+import jp.ginyolith.kamen_rider_matome.data.Blog
 import jp.ginyolith.kamen_rider_matome.data.HttpAccess
 import jp.ginyolith.kamen_rider_matome.databinding.MainFragmentBinding
 import jp.ginyolith.kamen_rider_matome.databinding.RowMatomeListBinding
@@ -37,7 +38,11 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Thread(Runnable {
-            val articles = HttpAccess().getArticles("https://kamen-rider-matome.firebaseapp.com/test_rss.txt")
+            val access = HttpAccess()
+            val articles = Blog.Enum.values()
+                    .flatMap { access.getArticles(it.feedUrl) }
+                    .sortedByDescending { it.pubDate }
+                    .toList()
             activity?.runOnUiThread {
                 binding.matomeList.adapter = ArticleListAdapter(articles, context)
 
