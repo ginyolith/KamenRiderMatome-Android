@@ -12,7 +12,7 @@ data class Article(
         val thumbnailUrl : String?
 ) {
     object Singleton {
-        val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+        val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPAN)
     }
     fun getFormattedPubDate() : String
         = Singleton.simpleDateFormat.format(pubDate)
