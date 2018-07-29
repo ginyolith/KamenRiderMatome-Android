@@ -63,8 +63,10 @@ class MainFragment : Fragment() {
         override fun getItemCount(): Int = dataList.size
 
         override fun onBindViewHolder(holder: BindingHolder, position: Int) {
-            holder.binding.article = dataList[position]
-            Glide.with(context).load(dataList[position].thumbnailUrl).into(holder.binding.imageRowMatome)
+            dataList[position].run {
+                holder.binding.article = this
+                Glide.with(context).load(thumbnailUrl).into(holder.binding.imageRowMatome)
+            }
         }
 
         class BindingHolder(var binding : RowMatomeListBinding) : RecyclerView.ViewHolder(binding.root)
