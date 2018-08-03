@@ -16,8 +16,7 @@ fun Activity.dialog(title : String, msg : String) {
     AlertDialog.Builder(this).apply {
         setTitle(title)
         setMessage(msg)
-        setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
-        })
+        setPositiveButton("OK", DialogInterface.OnClickListener { _, _ -> })
         setNegativeButton("Cancel", null)
         show()
     }
