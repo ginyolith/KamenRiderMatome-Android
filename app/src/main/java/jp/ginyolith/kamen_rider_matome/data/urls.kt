@@ -1,6 +1,5 @@
 package jp.ginyolith.kamen_rider_matome.data
 
-import android.provider.DocumentsContract
 import com.rometools.rome.feed.synd.SyndEntry
 import com.rometools.rome.feed.synd.SyndFeed
 import com.rometools.rome.io.SyndFeedInput
@@ -26,7 +25,7 @@ class HttpAccess {
     fun getBlogInfoFromRSSFeed(url : String): Blog
             = Blog.fromFeed(getFeed(url))
 
-    private fun getFeed(url : String) : SyndFeed
+    fun getFeed(url : String) : SyndFeed
             = SyndFeedInput().build(StringReader(getRSSFeed(url)))
 
     fun getArticles(url : String): List<Article> {
@@ -44,11 +43,10 @@ class HttpAccess {
                 Blog.Enum.HENSHIN_SOKUHOU -> findFirstImgTagSrc(entry.contents[0].value)
                 Blog.Enum.MATOME_2GOU -> findFirstImgTagSrc(entry.description.value)
             }
-
         }
 
         return feed.entries.map {
-            Article(blog, it.publishedDate, it.title, it.link, getThumbnailUrl(it, blog))
+            Article(0, blog._id, it.publishedDate, it.title, it.link, getThumbnailUrl(it, blog))
         }.toList()
 
     }
