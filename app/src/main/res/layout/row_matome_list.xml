@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:id="@+id/layout_row_matome"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:id="@+id/image_row_matome"
@@ -23,50 +23,52 @@
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_weight="3"
+            android:layout_weight="5"
             android:orientation="vertical"
-            android:padding="10dp"
-            android:layout_height="match_parent">
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/title_row_matome"
+                android:singleLine="false"
                 android:textSize="15sp"
+                android:layout_marginBottom="10dp"
                 tools:text="@{article.title}"
                 android:text="ジーニアス負けすぎって意見もあるけどそうでもなくない？【ビルド 45話】"
                 />
-
-            <TextView
+            <LinearLayout
+                android:layout_below="@+id/title_row_matome"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/blog_name_row_matome"
-                android:layout_alignParentBottom="true"
-                android:textSize="10sp"
-                tools:text="@{article.blog.enum.blogName}"
-                android:text="仮面RIDER まとめ2号"
-            />
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blog_name_row_matome"
+                    android:textSize="10sp"
+                    tools:text="@{article.blog.enum.blogName}"
+                    android:text="仮面RIDER まとめ2号"
+                />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:id="@+id/slash_row_matome"
-                android:layout_toEndOf="@id/blog_name_row_matome"
-                android:layout_alignParentBottom="true"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:text=" | "
-            />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/slash_row_matome"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:text=" | "
+                />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:id="@+id/pub_datetime_row_matome"
-                android:layout_toEndOf="@id/slash_row_matome"
-                android:layout_alignParentBottom="true"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                tools:text="@{article.getFormattedPubDate()}"
-                android:text="2018/7/28 14:44"
-            />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/pub_datetime_row_matome"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    tools:text="@{article.getFormattedPubDate()}"
+                    android:text="2018/7/28 14:44"
+                />
+            </LinearLayout>
         </RelativeLayout>
 
     </LinearLayout>
