@@ -44,6 +44,8 @@ class WebViewActivity : AppCompatActivity() {
 
         binding.webview.loadUrl(article.url)
         setSupportActionBar(binding.toolbar)
+
+        binding.toolbar.setOnClickListener { binding.webview.scrollTo(0,0) }
     }
 
     override fun onBackPressed() {

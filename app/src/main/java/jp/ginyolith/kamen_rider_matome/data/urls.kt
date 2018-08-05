@@ -25,7 +25,7 @@ class HttpAccess {
     fun getBlogInfoFromRSSFeed(url : String): Blog
             = Blog.fromFeed(getFeed(url))
 
-    fun getFeed(url : String) : SyndFeed
+    private fun getFeed(url : String) : SyndFeed
             = SyndFeedInput().build(StringReader(getRSSFeed(url)))
 
     fun getArticles(url : String): List<Article> {
@@ -40,7 +40,7 @@ class HttpAccess {
             return when(blog.enum) {
                 Blog.Enum.JIHOU,
                 Blog.Enum.TOKUSATSU_MATOME,
-                Blog.Enum.HENSHIN_SOKUHOU -> findFirstImgTagSrc(entry.contents[0].value)
+                Blog.Enum.HENSHIN_SOKUHOU  -> findFirstImgTagSrc(entry.contents[0].value)
                 Blog.Enum.MATOME_2GOU -> findFirstImgTagSrc(entry.description.value)
             }
         }

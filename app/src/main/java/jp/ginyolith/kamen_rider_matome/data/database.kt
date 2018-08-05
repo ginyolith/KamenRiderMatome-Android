@@ -17,7 +17,7 @@ interface ArticleDao {
 @Dao
 interface BlogDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg blog : Blog)
+    fun insertOrUpdate(vararg blog : Blog)
 
     @Update
     fun update(vararg blog : Blog)

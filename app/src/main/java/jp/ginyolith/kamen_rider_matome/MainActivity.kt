@@ -19,6 +19,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(binding.toolbar)
+
+        binding.toolbar.setOnClickListener {
+            val fragment = supportFragmentManager.fragments.firstOrNull { it is MainFragment }
+            fragment?.run {
+                if (fragment is MainFragment) {
+                    fragment.scrollToTop()
+                }
+            }
+        }
     }
 
 }
