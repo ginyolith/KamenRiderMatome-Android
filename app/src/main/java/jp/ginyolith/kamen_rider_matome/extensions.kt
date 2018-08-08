@@ -8,17 +8,18 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 
-fun Activity.toast(msg : String) {
-    Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
-}
+fun Activity.toast(msg : String)
+    = runOnUiThread { Toast.makeText(this,msg,Toast.LENGTH_SHORT).show() }
 
 fun Activity.dialog(title : String, msg : String) {
-    AlertDialog.Builder(this).apply {
-        setTitle(title)
-        setMessage(msg)
-        setPositiveButton("OK", DialogInterface.OnClickListener { _, _ -> })
-        setNegativeButton("Cancel", null)
-        show()
+    runOnUiThread {
+        AlertDialog.Builder(this).apply {
+            setTitle(title)
+            setMessage(msg)
+            setPositiveButton("OK", DialogInterface.OnClickListener { _, _ -> })
+            setNegativeButton("Cancel", null)
+            show()
+        }
     }
 }
 
