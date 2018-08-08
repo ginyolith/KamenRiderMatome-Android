@@ -3,9 +3,9 @@ package jp.ginyolith.kamen_rider_matome.data
 import com.rometools.rome.feed.synd.SyndEntry
 import com.rometools.rome.feed.synd.SyndFeed
 import com.rometools.rome.io.SyndFeedInput
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
 import org.jsoup.Jsoup
+import java.io.IOException
 import java.io.StringReader
 
 object SingletonOkHttpClient {
@@ -13,24 +13,45 @@ object SingletonOkHttpClient {
 }
 
 class HttpAccess {
-    fun getRSSFeed(url : String) : String{
+    fun getRSSFeed(url : String, callback : Callback){
         val req = Request.Builder()
                 .url(url)
                 .build()
-        val result = SingletonOkHttpClient.okHttpClient.newCall(req).execute()
+        SingletonOkHttpClient.okHttpClient.newCall(req).enqueue(callback)
 
-        return result.body()?.source()?.readUtf8() ?: ""
     }
 
-    fun getBlogInfoFromRSSFeed(url : String): Blog
-            = Blog.fromFeed(getFeed(url))
+    fun getBlogInfoFromRSSFeed(url : String,
+                               onFailure : (Call?, IOException?) -> Unit,
+                               onResponse : (Call?, Response?, Blog?) -> Unit) {
+        this.getFeed(url, onFailure) {call, response, feed ->
+            onResponse(call, response, Blog.fromFeed(requireNotNull(feed)))
+        }
+    }
 
-    private fun getFeed(url : String) : SyndFeed
-            = SyndFeedInput().build(StringReader(getRSSFeed(url)))
 
-    fun getArticles(url : String): List<Article> {
-        val feed = getFeed(url)
-        val blog = Blog.fromFeed(feed)
+    private fun getFeed(url : String,
+                onFailure : (Call?, IOException?) -> Unit,
+                onResponse : (Call?, Response?, SyndFeed?) -> Unit) {
+
+        this.getRSSFeed(url, object : Callback {
+            override fun onFailure(call: Call?, e: IOException?) {
+                onFailure(call, e)
+            }
+
+            override fun onResponse(call: Call?, response: Response?) {
+                val feed = SyndFeedInput().build(StringReader(response?.body()?.source()?.readUtf8()))
+                onResponse(call, response, feed)
+            }
+        })
+
+
+    }
+
+    fun getArticles(url : String,
+                    onFailure : (Call?, IOException?) -> Unit,
+                    onResponse : (Call?, Response?, List<Article>?) -> Unit
+        ) {
 
         fun getThumbnailUrl(entry: SyndEntry, blog: Blog): String? {
             val findFirstImgTagSrc = { html : String ->
@@ -45,12 +66,15 @@ class HttpAccess {
             }
         }
 
-        return feed.entries.map {
-            Article(0, blog._id, it.publishedDate, it.title, it.link, getThumbnailUrl(it, blog))
-        }.toList()
+        this.getFeed(url, onFailure) { call, response, feed ->
+            val blog = Blog.fromFeed(requireNotNull(feed))
 
-    }
-    fun getLatestArticle(url : String): Article? {
-        return getArticles(url).firstOrNull( )
+            val articles = feed?.entries?.map {
+                Article(0, blog._id, it.publishedDate, it.title, it.link, getThumbnailUrl(it, blog))
+            }?.toList()
+
+            onResponse(call, response, articles)
+        }
+
     }
 }
