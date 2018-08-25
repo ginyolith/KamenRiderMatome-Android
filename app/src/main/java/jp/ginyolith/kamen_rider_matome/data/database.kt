@@ -1,36 +1,23 @@
 package jp.ginyolith.kamen_rider_matome.data
 
+import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.*
+import android.arch.persistence.room.migration.Migration
 import android.content.Context
+import jp.ginyolith.kamen_rider_matome.data.article.Article
+import jp.ginyolith.kamen_rider_matome.data.article.local.ArticlesDao
+import jp.ginyolith.kamen_rider_matome.data.blog.Blog
+import jp.ginyolith.kamen_rider_matome.data.blog.local.BlogsDao
 import java.util.*
 
 
-@Dao
-interface ArticleDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg articles : Article)
 
-    @Query("select * from article order by pubDate desc")
-    fun selectAll() : List<Article>
-}
 
-@Dao
-interface BlogDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrUpdate(vararg blog : Blog)
-
-    @Update
-    fun update(vararg blog : Blog)
-
-    @Query("select * from blog")
-    fun selectAll() : List<Blog>
-}
-
-@Database(entities = [Article::class, Blog::class], version = 3, exportSchema = false)
+@Database(entities = [Article::class, Blog::class], version = 4, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class RSSDatabase : RoomDatabase() {
-    abstract fun articleDao() : ArticleDao
-    abstract fun blogDao() : BlogDao
+    abstract fun articleDao() : ArticlesDao
+    abstract fun blogDao() : BlogsDao
 
     companion object {
         private var INSTANCE: RSSDatabase? = null
@@ -42,7 +29,6 @@ abstract class RSSDatabase : RoomDatabase() {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                             RSSDatabase::class.java, database_name)
-                            .allowMainThreadQueries()
                             .fallbackToDestructiveMigration()
                             .build()
                 }
@@ -64,4 +50,12 @@ class Converters {
 
     @TypeConverter
     fun enumToLong(blogEnum : Blog.Enum?) : Long? = blogEnum?.run { blogEnum.ordinal.toLong() }
+}
+
+val migration_3_to_4 = object : Migration(3, 4){
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE Blog "
+                + " ADD COLUMN initialized INTEGER")
+    }
+
 }

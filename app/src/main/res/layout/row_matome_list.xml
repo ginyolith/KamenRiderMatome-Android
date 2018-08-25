@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
-        <variable name="article" type="jp.ginyolith.kamen_rider_matome.data.Article" />
+        <variable name="article" type="jp.ginyolith.kamen_rider_matome.data.article.Article" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

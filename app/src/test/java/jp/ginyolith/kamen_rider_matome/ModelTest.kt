@@ -1,7 +1,7 @@
 package jp.ginyolith.kamen_rider_matome
 
-import jp.ginyolith.kamen_rider_matome.data.Article
-import jp.ginyolith.kamen_rider_matome.data.Blog
+import jp.ginyolith.kamen_rider_matome.data.article.Article
+import jp.ginyolith.kamen_rider_matome.data.blog.Blog
 import org.junit.Test
 import org.junit.Assert.*
 import java.util.*

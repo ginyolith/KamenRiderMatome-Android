@@ -36,7 +36,6 @@ dependencies {
     implementation 'com.android.support:support-v4:27.1.1'
     kapt "android.arch.persistence.room:compiler:$room_version" // use kapt for Kotlin
 
-
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'

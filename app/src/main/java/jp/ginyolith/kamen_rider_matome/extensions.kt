@@ -2,7 +2,9 @@ package jp.ginyolith.kamen_rider_matome
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -35,4 +37,8 @@ fun RecyclerView.setBorder(enabled : Boolean) {
     } else {
         this.removeItemDecoration(decoration)
     }
+}
+
+fun Context.runSharedPreference(lambda : (edit : SharedPreferences.Editor) -> Unit) {
+    this.getSharedPreferences("data", Context.MODE_PRIVATE).edit().run {lambda(this)}
 }

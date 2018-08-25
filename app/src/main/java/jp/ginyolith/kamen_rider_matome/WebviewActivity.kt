@@ -7,8 +7,7 @@ import android.os.Bundle
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import jp.ginyolith.kamen_rider_matome.data.Article
-import jp.ginyolith.kamen_rider_matome.data.Blog
+import jp.ginyolith.kamen_rider_matome.data.article.Article
 import jp.ginyolith.kamen_rider_matome.databinding.ActivityWebviewBinding
 
 class WebViewActivity : AppCompatActivity() {

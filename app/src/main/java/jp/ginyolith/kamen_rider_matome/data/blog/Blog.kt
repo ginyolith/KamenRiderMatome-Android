@@ -1,39 +1,10 @@
-package jp.ginyolith.kamen_rider_matome.data
+package jp.ginyolith.kamen_rider_matome.data.blog
 
 import android.arch.persistence.room.Entity
-import android.arch.persistence.room.ForeignKey
-import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
 import com.rometools.rome.feed.synd.SyndFeed
 import java.io.Serializable
-import java.text.SimpleDateFormat
 import java.util.*
-
-@Entity
-data class Article(
-        @PrimaryKey(autoGenerate = true)
-        val _id : Long = 0,
-        @ForeignKey(
-                entity = Blog::class,
-                parentColumns = ["_id"],
-                childColumns = ["blogId"]
-        ) var blogId : Long,
-        val pubDate : Date,
-        val title : String,
-        val url : String,
-        val thumbnailUrl : String?
-) : Serializable {
-
-    @Ignore
-    lateinit var blog : Blog
-
-    object Singleton {
-        val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPAN)
-    }
-
-    fun getFormattedPubDate() : String = Singleton.simpleDateFormat.format(pubDate)
-    fun isSameBlog(url: String): Boolean = url.startsWith(this.blog.enum.url)
-}
 
 @Entity
 data class Blog(
@@ -43,6 +14,7 @@ data class Blog(
 
     var enum : Enum = Blog.Enum.fromOrdinal(_id.toInt())!!
     var description : String = ""
+    var initialized : Boolean = false
     lateinit var lastUpdateDate : Date
 
     constructor(_id : Long, enum : Enum,  description : String, lastUpdateDate : Date?) : this(_id) {
@@ -62,9 +34,9 @@ data class Blog(
                 )
             }
         }
-     }
+    }
 
-    enum class Enum(val blogName : String, val url : String, val feedPath : String) : Serializable{
+    enum class Enum(val blogName : String, val url : String, val feedPath : String) : Serializable {
         MATOME_2GOU("仮面ライダーまとめ２号", "http://kamenrider2.net",  "/feed")
         ,HENSHIN_SOKUHOU("変身速報","http://www.henshin-hero.com/", "index.rdf")
         ,TOKUSATSU_MATOME("特撮まとめちゃんねる", "http://maskrider-futaba.info", "/feed/")

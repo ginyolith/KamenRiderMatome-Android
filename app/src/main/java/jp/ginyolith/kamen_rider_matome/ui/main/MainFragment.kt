@@ -11,15 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import jp.ginyolith.kamen_rider_matome.*
-import jp.ginyolith.kamen_rider_matome.data.Article
-import jp.ginyolith.kamen_rider_matome.data.Blog
-import jp.ginyolith.kamen_rider_matome.data.HttpAccess
 import jp.ginyolith.kamen_rider_matome.data.RSSDatabase
+import jp.ginyolith.kamen_rider_matome.data.article.Article
+import jp.ginyolith.kamen_rider_matome.data.blog.ArticlesDataSource
+import jp.ginyolith.kamen_rider_matome.data.blog.ArticlesRepository
+import jp.ginyolith.kamen_rider_matome.data.blog.BlogsRepository
 import jp.ginyolith.kamen_rider_matome.databinding.MainFragmentBinding
 import jp.ginyolith.kamen_rider_matome.databinding.RowMatomeListBinding
-import okhttp3.Call
-import java.io.IOException
-import java.util.concurrent.CountDownLatch
 
 class MainFragment : Fragment() {
 
@@ -28,10 +26,12 @@ class MainFragment : Fragment() {
     }
 
     private lateinit var binding: MainFragmentBinding
+    private lateinit var blogsRepository: BlogsRepository
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
+        blogsRepository = BlogsRepository.getInstance(requireContext())
 
         binding.swipeRefreshMain.setOnRefreshListener {
             Thread(Runnable {
@@ -53,6 +53,19 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        val refreshUiList : (List<Article>) -> Unit = {
+            activity?.runOnUiThread {
+                binding.matomeList.adapter = ArticleListAdapter(it, context)
+
+                // 縦軸のリストと設定する
+                binding.matomeList.layoutManager = LinearLayoutManager(context)
+
+                // Listに区切り線を入れる
+                binding.matomeList.setBorder(true)
+            }
+        }
+
         Thread(Runnable {
             val database = RSSDatabase.getInstance(requireContext())
             val articleDao = database.articleDao()
@@ -62,6 +75,19 @@ class MainFragment : Fragment() {
                 article.blog = blogs.firstOrNull { it._id == article.blogId }!!
             } }
 
+            if (articles.isEmpty()) {
+                refreshArticleList()
+            }
+
+
+        }).start()
+    }
+
+    /**
+     * リモートからRSS情報を読み込み、ローカルに格納。UIに反映する
+     */
+    private fun refreshArticleList(callback : () -> Unit = {}) {
+        val refreshList = { articles : List<Article> ->
             activity?.runOnUiThread {
                 binding.matomeList.adapter = ArticleListAdapter(articles, context)
 
@@ -70,125 +96,31 @@ class MainFragment : Fragment() {
 
                 // Listに区切り線を入れる
                 binding.matomeList.setBorder(true)
+
+                callback()
             }
-        }).start()
-    }
+        }
 
-    /**
-     * リモートからRSS情報を読み込み、ローカルに格納。UIに反映する
-     */
-    private fun refreshArticleList(callback : () -> Unit) {
-        val database = RSSDatabase.getInstance(requireContext())
-        val articleDao = database.articleDao()
-        val blogDao = database.blogDao()
-        val initedBlogs = blogDao.selectAll()
-        val access = HttpAccess()
-
-        database.runInTransaction {
-            // 最新のブログ情報を取得
-            // ブログの最終更新日を更新
-            val latestBlogs = getLatestBlogInfo(access).filterNotNull()
-            blogDao.insertOrUpdate(*latestBlogs.toTypedArray())
-
-            // 初期化済みのブログの記事を取得してdbにinsert
-            val insertArticles = ArrayList<Article>()
-            insertArticles.addAll(getInitedArticleList(initedBlogs,access))
-
-            // 初期化
-            insertArticles.addAll(getNotInitedArticles(latestBlogs, initedBlogs, access))
-
-            if (insertArticles.isEmpty()) {
+        ArticlesRepository.getInstance(requireContext()).getArticles(object : ArticlesDataSource.Callback{
+            override fun onNoNewArticle() {
                 activity?.toast("新着の記事はありません。")
-            } else {
-                articleDao.insert(*insertArticles.toTypedArray())
+                activity?.runOnUiThread{callback()}
+
             }
-        }
 
-        val blogs = blogDao.selectAll()
-        val articles = articleDao.selectAll().apply { forEach { article ->
-            article.blog = blogs.firstOrNull { it._id == article.blogId }!!
-        } }
-
-        activity?.runOnUiThread {
-            binding.matomeList.adapter = ArticleListAdapter(articles, context)
-
-            // 縦軸のリストと設定する
-            binding.matomeList.layoutManager = LinearLayoutManager(context)
-
-            // Listに区切り線を入れる
-            binding.matomeList.setBorder(true)
-
-            callback()
-        }
-    }
-
-    fun getInitedArticleList(initedBlogs : List<Blog>, access : HttpAccess): ArrayList<Article> {
-        val latch = CountDownLatch(initedBlogs.size)
-        val initedBlogArticles = ArrayList<Article>()
-        val onFailure : (Call?, IOException?) -> Unit = { _, e ->
-            activity?.toast("リクエストに失敗しました。")
-            latch.countDown()
-        }
-        // 初期化済み
-        initedBlogs.forEach { blog ->
-            access.getArticles(blog.enum.getFeedUrl(), onFailure) { _, _, list ->
-                requireNotNull(list).apply {
-                    forEach { it.blog = blog }
-                }.filter {
-                    // TODO test and modelに処理移譲
-                    it.pubDate > it.blog.lastUpdateDate
-                }.toList().let {
-                    initedBlogArticles.addAll(it)
-                }
-                latch.countDown()
+            override fun onAllSuccess(articles: List<Article>) {
+                refreshList(articles)
             }
-        }
-        latch.await()
-        return initedBlogArticles
-    }
 
-    fun getLatestBlogInfo(access : HttpAccess): ArrayList<Blog?> {
-        val latch = CountDownLatch(Blog.Enum.values().size)
-        val latestBlogs = ArrayList<Blog?>()
-        val onFailure : (Call?, IOException?) -> Unit = { _, e ->
-            activity?.toast("リクエストに失敗しました。")
-            latch.countDown()
-        }
-
-        Blog.Enum.values().map {
-            access.getBlogInfoFromRSSFeed(it.getFeedUrl(), onFailure) { _, _, blog ->
-                latestBlogs.add(blog)
-                latch.countDown()
+            override fun onSomeFaild(articles: List<Article>, errors: List<ArticlesDataSource.Error>) {
+                refreshList(articles)
             }
-        }
-        latch.await()
 
-        return latestBlogs
-    }
+            override fun onAllFaild(errors: List<ArticlesDataSource.Error>) {
 
-    fun getNotInitedArticles(latestBlogs : List<Blog>, initedBlogs: List<Blog>, access : HttpAccess): ArrayList<Article> {
-        val notInitBlogds = latestBlogs.filterNot {
-            initedBlogs.map(Blog::_id).contains(it?._id)
-        }.toList()
-        val latch = CountDownLatch(notInitBlogds.size)
-        val articleList = ArrayList<Article>()
-        val onFailure : (Call?, IOException?) -> Unit = { _, e ->
-            activity?.toast("リクエストに失敗しました。")
-            latch.countDown()
-        }
-        notInitBlogds.forEach { blog ->
-            access.getArticles(requireNotNull(blog).enum.getFeedUrl(), onFailure) { _, _, list ->
-                requireNotNull(list).run {
-                    forEach { it.blog = requireNotNull(blog) }
-                }
-
-                articleList.addAll(requireNotNull(list))
-                latch.countDown()
             }
-        }
 
-        latch.await()
-        return articleList
+        })
     }
 }
 
